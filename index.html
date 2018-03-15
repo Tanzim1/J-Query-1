@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--font-awesome-->
+    <link rel="stylesheet" href="css/fontawesome-all.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- Bootstrap CSS -->
+    
+    
+    <link rel="stylesheet" href="css/style.css">
+    <!--Google Font-->
+     
+
+    <title>jQuery basics</title>
+  </head>
+  <body>
+  <button id="dBclick">Open New Window!!!</button>
+  <div class="gallery_btn text-center">
+      <div class="container">
+          <div class="row"> 
+          <div class="col-md-8 col-md-offset-2">
+             <div style="text-align:center;">
+              <button id="all_btn">All button</button>
+              <button id="webdesign_btn">Web Design</button>
+              <button id="webdevelopment_btn">Web Development</button>
+              
+          </div>
+          </div>
+          
+          
+          
+          </div>
+          
+      </div>
+  </div>
+  <div class="gallery_images">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4 webdesign">
+              <div class="singleimage">
+              <img src="img/webdesign.jpg" alt=""class="img-responsive">
+              </div>
+              </div>
+              <div class="col-md-4 webdev">
+              <div class="singleimage"> 
+              <img src="img/webdevelopment.png" alt=""class="img-responsive">
+              </div>
+              </div>
+              <div class="col-md-4 webdesign">
+              <div class="singleimage">
+              <img src="img/webdesign.jpg" alt=""class="img-responsive"> 
+              
+              </div>
+              </div>
+              <div class="col-md-4 webdev"> 
+              <div class="singleimage">
+              <img src="img/webdevelopment.png" alt=""class="img-responsive">
+              </div>
+              </div>
+              <div class="col-md-4 webdesign">
+              <div class="singleimage">
+              <img src="img/webdesign.jpg" alt=""class="img-responsive"> 
+              
+              </div>
+              </div>
+              <div class="col-md-4 webdev">
+              <div class="singleimage"> 
+              <img src="img/webdevelopment.png" alt=""class="img-responsive">
+              </div>
+              </div>
+          </div>
+          
+      </div>
+  </div>
+  <div class="gallery_character">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <form action="">
+                     <input type="password"id="password_field">
+                     <p class="pass_notification"></p>
+                     <br>
+                     <br>
+                     <select name="" id="bg_color">
+                     <option value="select a value">Select a color</option>
+                      <option value="orange">Orange</option>
+                      <option value="red">Red</option>
+                      <option value="green">Green</option>
+                     </select>
+                     <br>
+                     <br>
+                      <textarea name="" id="message"  cols="100" rows="10" ></textarea>
+                      <br>
+                      <br>
+                      <div class="remaining">You have 100 characters remaining</div>
+                  </form>
+                  
+                  
+              </div>
+              
+              
+          </div>
+          
+          
+      </div>
+      
+  </div>
+
+  
+  
+<script src="js/jquery-3.3.1.min.js"></script>
+ <script>
+    $(document).ready(function(){
+        $(".webdesign").css({
+            opacity:0.5,
+        });
+        $(".webdev").css({
+            opacity:0.5,
+        });
+        $(".webdesign").mouseenter(function(){
+            $(this).fadeTo(100,1)
+        });
+         $(".webdesign").mouseleave(function(){
+            $(this).fadeTo(100,0.5)
+        });
+        $(".webdev").mouseenter(function(){
+            $(this).fadeTo(100,1)
+        });
+         $(".webdev").mouseleave(function(){
+            $(this).fadeTo(100,0.5)
+        });
+        
+    $("#dBclick").dblclick(function(){
+      window.open("https://facebook.com","_blank","height=800,width=800");              
+        });
+    $("#webdesign_btn").click(function(){
+         
+        $(".webdesign").show();
+        $(".webdev").hide();
+         
+     });
+     $("#webdevelopment_btn").click(function(){
+         
+        $(".webdesign").hide();
+        $(".webdev").show();
+         
+     });
+      $("#all_btn").click(function(){
+        $(".webdesign").show();
+        $(".webdev").show();
+      });
+     $(".webdesign").mousemove(function(){
+        alert("Mouse entered!!!"); 
+      });
+      $(".webdev").mousedown(function(){
+        alert("Mouse entered!!!"); 
+        });
+     $("#message").keyup(function(){
+              alert("Keyupdone!!!");            
+        });
+    });
+    
+     $("#password_field").keyup(function(){
+         var pass=$(this).val().length;
+         if(pass<1){
+             $(this).removeClass("red");
+             $(this).removeClass("orange");
+             $(this).removeClass("green");
+             $(".pass_notification").text("Strong");
+                 $(".pass_notification").css({
+                     color:'yellow'});
+             }else if(pass<6){
+             $(this).addClass("red");
+             $(this).removeClass("orange");
+             $(this).removeClass("green");
+                 $(".pass_notification").text("Strong");
+                 $(".pass_notification").css({
+                     color:'yellow'});
+            }else if(pass<10){
+             $(this).removeClass("red");
+             $(this).addClass("orange");
+             $(this).removeClass("green");
+                 $(".pass_notification").text("Strong");
+                 $(".pass_notification").css({
+                     color:'red'});
+            }else{
+            $(this).removeClass("red");
+            $(this).removeClass("orange");
+            $(this).addClass("green");
+                 $(".pass_notification").text("Strong");
+                 $(".pass_notification").css({
+                     color:'blue'
+                 });
+                }
+         });
+         $("#bg_color").change(function(){
+             alert("Change");
+             var color=$("#bg_color option:selected").val();
+             alert(color);
+             $("body").css({
+                 backgroundColor:color
+             });
+             });
+         
+     $("#message").keyup(function(){
+             var max=500
+             var data=$(this).val().length;
+             var result=max-data;
+             $(".remaining").text("You have"+result+"character remaining");
+         });
+         
+        
+         
+        
+        
+        
+       
+     
+        
+        
+     
+         
+            
+            
+     
+     
+   
+    
+    
+  
+    
+      
+      
+      
+      
+</script>
+    
+
+
+
+    
+   
+      
+    
+    
+  </body>
+</html>
